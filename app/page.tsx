@@ -1,9 +1,8 @@
 'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import { JSX } from "react";
-import React from 'react';
+import React, { JSX } from 'react';
 
 // export default function Home() {
 //   return (
@@ -99,46 +98,67 @@ import React from 'react';
 // }
 
 
+// interface WeatherProps {
+//   weather: string;
+// };
+
+// type WeatherState = {
+//   count: number;
+// };
+
+// class WeatherComponent extends React.Component<WeatherProps, WeatherState> {
+//   constructor(props: WeatherProps) {
+//     super(props);
+//     this.state = {
+//       count: 0
+//     };
+//   }
+
+//   componentDidMount() {
+//     this.setState({ count: 1 });
+//   }
+
+//   clickHandler(): void {
+//     this.setState({ count: this.state.count + 1 });
+//   }
+
+//   render() {
+//     return (
+//       <h1 onClick={() => this.clickHandler()}>
+//         The weather is {this.props.weather}, and the counter shows {this.state.count}
+//       </h1>
+//     );
+//   }
+// }
+
+// export default function Home() {
+//   return (
+//     <WeatherComponent weather="sunny" />
+//   );
+// }
+
+
+import { useState, useEffect } from 'react';
+
 interface WeatherProps {
   weather: string;
 };
 
-type WeatherState = {
-  count: number;
+const WeatherComponent = (props: WeatherProps): JSX.Element => {
+  const [ count, setCount ] = useState(0);
+
+  return (
+    <h1 onClick={() => setCount(count + 1) }>
+      The weather is {props.weather}, and the counter shows {count}
+    </h1>
+  );
 };
-
-class WeatherComponent extends React.Component<WeatherProps, WeatherState> {
-  constructor(props: WeatherProps) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ count: 1 });
-  }
-
-  clickHandler(): void {
-    this.setState({ count: this.state.count + 1 });
-  }
-
-  render() {
-    return (
-      <h1 onClick={() => this.clickHandler()}>
-        The weather is {this.props.weather}, and the counter shows {this.state.count}
-      </h1>
-    );
-  }
-}
 
 export default function Home() {
   return (
-    <WeatherComponent weather="sunny" />
+    <WeatherComponent weather='sunny' />
   );
 }
-
-
 
 
 
